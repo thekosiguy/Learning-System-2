@@ -2,20 +2,64 @@
 
 <form method="get" action="/webpage">
 	<p><label for="title">Title Of Webpage: </label><input type="text" name="title" /></p>
+	<p><label for="no_of_items">Input Number Of Items: </label><input type="text" id="no_of_items" /></p>
+	<input type="submit" onclick="inputItems(); return false;" />
+ 
+	<div id="html_wrapper"></div>
+
+	<script>
+		var item_wrapper = document.getElementById("html_wrapper"); 
+		var item_data = ""; 
+
+		function item_info(){
+			item_data += '<p><label for="name">Name Of Item: </label><input type="text" name="name" /></p>'
+			item_data += '<input type="submit" return false;">' 
+		}	
+
+		function inputItems(){
+			var no_of_items = document.getElementById("no_of_items").value; 
+
+			for (var i = 0; i < no_of_items; i++){
+				item_info();
+			}
+			item_wrapper.innerHTML = item_data;
+		}
+	</script>
 </form>
 
-<input type="text" id="item"/>
-<input type="button" value="Add To list Of Items" id="add"/>
-<ol id="list"></ol>
+	<!--Attempt at generating some of the structure of the form.
+	<input type="submit" value="Add Item" />
+	document.addEventListener('DOMContentLoaded', init, false);
+	function init(){
+		function inputItems(){
+			<h3>ok</h3>
+			var count = 0;
+			while (count < amount){
+				<p><label for="name">Input Name: </label><input type="text" name="name" /></p>
+				<input type="submit" value="Add Item" />
+				count=count + 1;
+			}
+		}
+		var button = document.getElementById('button');
+		button.addEventListener('click', inputItems, true);
+	}
+	
+	</script>
+	<input type="submit" value="Submit Form" />
+	</script>
+	-->
 
-<script type = "text/javascript">
+	<!--Another attempt at generating some of the structure of the form.
+	<input type="text" id="item"/>
+	<input type="button" value="Add To list Of Items" id="add"/>
+	<ol id="list"></ol>
 
-document.getElementById("add").onclick = function(){
+	<script type = "text/javascript">
+
+	document.getElementById("add").onclick = function(){
 	var input = document.getElementById("item").value; 
 	var li = "<li>"+input+"</li>";
 	document.getElementById("list").appendChild(li);
-}
 
-</script>
-
-<p>{{list}}</p>
+	<p>{{list}}</p>
+	-->

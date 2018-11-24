@@ -21,6 +21,12 @@ app.get('/register', (req, res) => {
 	res.render('register'); 
 })
 
+app.get('/webpage', (req, res) => {
+	var readline = require('readline');
+	var fs = require('fs');
+	res.render('webpage');  
+})
+
 app.post('/register', (req, res) => {
 	const formData = JSON.stringify(req.body, null, 2)
 	const jsonObj = JSON.parse(formData)
