@@ -1,0 +1,39 @@
+<h2>Account Registration</h2>
+<form method="post" action="/register">
+	<fieldset>
+		<legend>Personal Details</legend>
+		<p><label for="name">Name:</label><input type="text" name="name" /></p>
+		<fieldset>
+			<legend>Address</legend>
+			<p>
+			<label for="house_no">House/Flat no.</label><input type="text" name="house_no" /><br />
+			<label for="street">Street: </label><input type="text" name="street" /><br />
+			<label for="city">City: </label><input type="text" name="city" /><br />
+			<label for="postcode">Postcode: </Label><input type="text" name="postcode" /><br />
+			</p>
+		</fieldset>
+		<p>
+		<label for="male">Male:</label><input type="radio" name="gender" value="male" /><br />
+		<label for="female">Female:</label><input type="radio" name="gender" value="female" /><br />
+		</p>
+		<p>
+			<label for="dob">Date of Birth:</label>
+			<input type="date" name="dob" min="1900-01-01" />
+		</p>
+		<p>
+			<label for="emailadd">Email Address:</label>
+			<input type="email" name="emailadd"/>
+		</p>
+	</fieldset>
+
+	<fieldset>
+		<legend>Account Details</legend>
+		<p><label for="username">Preferred username:</label><input type="text" name="username" /></p>
+		<p><label for="password">Password:</label><input type="password" name="password" /></p>
+		<p><label for="confirm">Confirm password:</label><input type="password" name="confirm" /></p>
+	</fieldset>
+	<input type="hidden" name="formtype" value="registration" />
+	<input type="submit" value="submit form" />
+	<br>
+	<a href="/menu">Menu</a>
+</form>

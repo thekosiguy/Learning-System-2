@@ -1,0 +1,21 @@
+<h2>Webpage Creator</h2>
+
+<form method="get" action="/webpage">
+	<p><label for="title">Title Of Webpage: </label><input type="text" name="title" /></p>
+</form>
+
+<input type="text" id="item"/>
+<input type="button" value="Add To list Of Items" id="add"/>
+<ol id="list"></ol>
+
+<script type = "text/javascript">
+
+document.getElementById("add").onclick = function(){
+	var input = document.getElementById("item").value; 
+	var li = "<li>"+input+"</li>";
+	document.getElementById("list").appendChild(li);
+}
+
+</script>
+
+<p>{{list}}</p>
