@@ -12,19 +12,33 @@ app.set('view engine', 'handlebars')
 
 const port = 8080
 
-app.get('/', (req, res) => {
+app.get('/menu', (req, res) => {
+	var readline = require('readline');
+	var fs = require('fs');
 	res.render('menu')
 })
+
+app.post('/menu', (req, res) => {
+	const formData = JSON.stringify(req.body, null, 2);
+	const jsonObj = JSON.parse(formData);
+
+	const user_data = {
+		username: jsonObj.username,
+		password: jsonObj.password
+		}
+
+	res.redirect('user_input.js', user_data)
+})
+
+app.post('/user', (req, res) => {
+	console.log(req.body);
+	res.render('user')
+})
+
 app.get('/register', (req, res) => {
 	var readline = require('readline');
 	var fs = require('fs');
 	res.render('register'); 
-})
-
-app.get('/webpage', (req, res) => {
-	var readline = require('readline');
-	var fs = require('fs');
-	res.render('webpage');  
 })
 
 app.post('/register', (req, res) => {
@@ -66,7 +80,17 @@ app.post('/register', (req, res) => {
 })
 
 app.get('/webpage', (req, res) => {
+	var readline = require('readline');
+	var fs = require('fs');
+	res.render('webpage');  
+})
+
+app.post('/webpage', (req, res) => {
 	res.render('webpage')
+})
+
+app.get('/about', (req, res) => {
+	res.render('about')
 })
 
 app.listen(port, () => console.log(`app listening on port ${port}`))
