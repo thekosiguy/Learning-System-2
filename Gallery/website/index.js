@@ -90,6 +90,7 @@ app.post('/register', (req, res) => {
 	res.render('datapage', users_details)
 })
 
+
 app.get('/webpage', (req, res) => {
 	var readline = require('readline');
 	var fs = require('fs');

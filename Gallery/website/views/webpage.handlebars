@@ -1,10 +1,17 @@
 <h2>Webpage Creator</h2>
 
 <form method="get" action="/webpage">
+	<!--Get title of webpage and no. of items the user wants to add to it-->
 	<p><label for="title">Title Of Webpage: </label><input type="text" name="title" /></p>
 	<p><label for="no_of_items">Input Number Of Items: </label><input type="text" id="no_of_items" /></p>
 	<input type="submit" onclick="inputItems(); return false;" />
  
+	<!--Get name, description and price of each item from the user, html_wrapper
+	required so variables can be wrapped in html and therefore their values can be displayed on the page,
+	item_info() used to acquire information about the items, inputItems() to display the required no. of fields for
+	each item -->
+
+	<!--Declare html wrappper-->
 	<div id="html_wrapper"></div>
 
 	<script>
@@ -13,17 +20,43 @@
 
 		function item_info(){
 			item_data += '<p><label for="name">Name Of Item: </label><input type="text" name="name" /></p>'
-			item_data += '<input type="submit" return false;">' 
+			item_data += '<p><label for="description">Item Description: </label><input type="text" name="description" /></p>'
+			item_data += '<p><label for="price">Price (GBP): </label><input type="number" name="price" /></p>'
+			item_data += '<input type="submit">' 
 		}	
 
 		function inputItems(){
+			//Obtain no. of items from the user
+			item_data = "";
 			var no_of_items = document.getElementById("no_of_items").value; 
 
 			for (var i = 0; i < no_of_items; i++){
 				item_info();
 			}
+			//wrap item_data in html
 			item_wrapper.innerHTML = item_data;
 		}
+	</script>
+	<h2>Contact Details</h2>
+	<div id="details_wrapper"></div>
+
+	<script>
+		//Declare html wrapper
+		var details_wrapper = document.getElementById("details_wrapper");
+		var contact_details = ""; 
+
+		//Use artists_details function to acquire the user's contact details
+		function artists_details(){
+			contact_details += '<p><label for="name">Email Address: </label><input type="email" name="email" /></p>'
+			contact_details += '<p><label for="name">Contact No: </label><input type="number" name="contact_no" /></p>'
+			contact_details += '<input type="submit" return false;">'
+
+			//wrap contact_details in html
+			details_wrapper.innerHTML = contact_details;
+		}
+
+		artists_details(); 
+
 	</script>
 </form>
 <br>
