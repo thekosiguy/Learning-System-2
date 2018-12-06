@@ -90,6 +90,73 @@ app.post('/register', (req, res) => {
 	res.render('datapage', users_details)
 })
 
+app.get('/webpage2', (req, res) => {
+	var readline = require('readline');
+	var fs = require('fs');
+	res.render('webpage2'); 
+})
+
+app.post('/webpage2', (req, res) => {
+	const formData = JSON.stringify(req.body, null, 2)
+	const jsonObj = JSON.parse(formData)
+
+	const details = {
+		title: jsonObj.title, 
+		items: [],
+		email: jsonObj.email,
+		contact_no: jsonObj.contact_no
+	}
+
+	for (var i = 0; i < jsonObj.no_of_items; i++){
+		details.items.push({item: ""}); 
+	}
+
+	app.set('details', details); 
+	res.render('items', details);  
+})
+
+app.post('/items', (req, res) => {
+	var details = app.get('details');
+	const formData = JSON.stringify(req.body, null, 2)
+	const itemData = JSON.parse(formData)
+
+	var item_data = []; 
+	var index  = 0;
+	var num_of_items;
+
+	if (typeof itemData.name_of_item === "string"){
+		num_of_items = itemData.name_of_item.split().length; 
+	}else{
+		num_of_items = itemData.name_of_item.length; 
+	}
+
+	if ((num_of_items) > 1){
+		for (var i = 0; i < num_of_items; i ++){
+			item_data.push([]); 
+			(item_data[index]).push("Item Name: "+itemData.name_of_item[i]); 
+			(item_data[index]).push(" Description: "+itemData.desc_of_item[i]); 
+			(item_data[index]).push(" Price: "+itemData.price[i]);
+			index += 1; 
+		}
+	}else{
+		item_data.push("Item Name: "+itemData.name_of_item);
+		item_data.push(" Description: "+itemData.desc_of_item); 
+		item_data.push(" Price: "+itemData.price);
+	}
+	
+
+	console.log(item_data); 
+
+	const user_input = {
+		title: details.title,
+		item_data: item_data, 
+		email: details.email,
+		contact_no: details.contact_no
+	}
+
+	res.render('displayWebpage', user_input); 
+
+})
 
 app.get('/webpage', (req, res) => {
 	var readline = require('readline');

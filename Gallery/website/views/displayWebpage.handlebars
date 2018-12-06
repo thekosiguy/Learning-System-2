@@ -1,0 +1,16 @@
+<!--Display the webpage created by the user-->
+<h2>{{title}}</h2>
+<!--Display the details of each item-->
+<h2>Items</h2>
+<ul>
+    {{#each item_data}}
+        <li>{{this}}</li>
+        <br>
+    {{/each}}
+</ul>
+
+<h2>Contact Details</h2>
+<b>Email: {{email}}</b><br>
+<b>Contact No: {{contact_no}}</b>
+<br><br>
+<a href="user.handlebars">Welcome</a>
