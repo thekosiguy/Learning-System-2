@@ -42,14 +42,14 @@ app.get('/user', (req, res) => {
 
 app.post('/menu', passport.authenticate
 	('local', {
-	successRedirect: ('/user'),
+	successRedirect: '/user',
 	failureRedirect: '/menu'
 })); 
 
 app.get('/register', (req, res) => {
 	var readline = require('readline');
 	var fs = require('fs');
-	res.render('register'); 
+	res.render('register')
 })
 
 app.post('/register', (req, res) => {
@@ -58,14 +58,14 @@ app.post('/register', (req, res) => {
 	
 	const sqlite3 = require('sqlite3').verbose(); 
 	
-	let userdb = new sqlite3.Database('./users.db', (err) => {
+	let usersdb = new sqlite3.Database('./users.db', (err) => {
 	if (err){
 		return console.error(err.message); 
 	}
 		console.log('Connected to Users database.');
 	})
 															  
-	let sql = userdb.run('INSERT INTO Users(name, house_no, street, city, postcode, gender, dob, emailadd, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+	let sql = usersdb.run('INSERT INTO Users(name, house_no, street, city, postcode, gender, dob, emailadd, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
 	[jsonObj.name, jsonObj.house_no, jsonObj.street, jsonObj.city, jsonObj.postcode, 
 	jsonObj.gender, jsonObj.dob, jsonObj.emailadd, jsonObj.username, jsonObj.password], (err) => {
 		if(err) {
@@ -93,7 +93,7 @@ app.post('/register', (req, res) => {
 app.get('/webpage2', (req, res) => {
 	var readline = require('readline');
 	var fs = require('fs');
-	res.render('webpage2'); 
+	res.render('webpage2')
 })
 
 app.post('/webpage2', (req, res) => {
@@ -112,11 +112,13 @@ app.post('/webpage2', (req, res) => {
 	}
 
 	app.set('details', details); 
-	res.render('items', details);  
+	res.render('items', details)
 })
 
 app.post('/items', (req, res) => {
 	var details = app.get('details');
+	var username = app.get('username'); 
+
 	const formData = JSON.stringify(req.body, null, 2)
 	const itemData = JSON.parse(formData)
 
@@ -144,7 +146,6 @@ app.post('/items', (req, res) => {
 		item_data.push(" Price: "+itemData.price);
 	}
 	
-
 	console.log(item_data); 
 
 	const user_input = {
@@ -154,14 +155,77 @@ app.post('/items', (req, res) => {
 		contact_no: details.contact_no
 	}
 
-	res.render('displayWebpage', user_input); 
+	//Initialize sqlite3
+	const sqlite3 = require('sqlite3').verbose(); 
+	
+	//Connect to the database, return error message if connection fails
+	let usersdb = new sqlite3.Database('./users.db', (err) => {
+	if (err){
+		return console.error(err.message); 
+	}
+		console.log('Connected to Users database.');
+	})
+
+	var str_item_data = user_input.item_data.toString(); 
+	console.log(str_item_data);
+	console.log(username);
+
+	//Insert user's webpage details into Webpages table
+	let sql = usersdb.run('INSERT INTO Webpages(title, item_list, email_add, contact_no, username) VALUES(?, ?, ?, ?, ?)', 
+	[user_input.title, str_item_data, user_input.email, user_input.contact_no, username], (err) => {
+		if(err) {
+			return console.log(err.message); 
+		}
+		console.log('Data was added to the table.');
+	})
+
+	res.render('displayWebpage', user_input)
 
 })
+
+app.get('/displayWebpage', (req, res) => {
+	var username = app.get('username');
+	console.log("username: "+username);
+
+	const sqlite3 = require('sqlite3').verbose(); 
+	const usersdb = new sqlite3.Database('./users.db'); 
+
+	usersdb.get('SELECT * FROM Webpages WHERE username = ?', [username],
+			function(err, results, fields){
+				var webpage_exists; 
+				if (err) {
+					return console.log(err.message);
+				}
+				if (results != undefined){
+					//Length of returned object is 0 therefore webpage hasn't been created
+					if (results.length === 0){
+						console.log("Webpage hasn't been created. Please create one.")
+					}else{
+						webpage_exists = true; 
+						console.log("results: "+results.item_list.split())
+						}
+				}else{
+					console.log("Webpage hasn't been created. Please create one.")
+				}
+
+				if (webpage_exists === true){
+					const user_input = {
+						title: results.title,
+						item_list: results.item_list.split(),
+						email: results.email_add,
+						contact_no: results.contact_no
+					}
+					res.render('displayWebpage', user_input)
+				}else{
+					console.log("Webpage hasn't been created. Please create one.")
+				}
+		}); 
+	})
 
 app.get('/webpage', (req, res) => {
 	var readline = require('readline');
 	var fs = require('fs');
-	res.render('webpage');  
+	res.render('webpage')
 })
 
 app.post('/webpage', (req, res) => {
@@ -175,13 +239,11 @@ app.get('/about', (req, res) => {
 //Used for validating login information input by the user
 passport.use(new LocalStrategy(
 	function(username, password, done) {
-		console.log("Username:"+ username);
-		console.log("Password:" + password);
 
 		const sqlite3 = require('sqlite3').verbose(); 
-		const userdb = new sqlite3.Database('./users.db'); 
+		const usersdb = new sqlite3.Database('./users.db'); 
 
-		userdb.get('SELECT password FROM Users WHERE username = ?', [username],
+		usersdb.get('SELECT password FROM Users WHERE username = ?', [username],
 			function(err, results, fields){
 				if (err) {done(err)}; 
 				
@@ -193,8 +255,10 @@ passport.use(new LocalStrategy(
 					/*Username exists in the database, so compare password input by the user
 					to password stored in the database that corresponds to the username, if
 					they match log the user in.*/
+
 					if (results.password === password){
 						//log the user in
+						app.set('username', username); 
 						return done(null, {username}); 
 					}else{
 						//Incorrect password therefore return to menu page
@@ -204,8 +268,8 @@ passport.use(new LocalStrategy(
 				}else{
 					done(null, false)
 				}
-			})
+		})
 	}
-));
+)); 
 
-app.listen(port, () => console.log(`app listening on port ${port}`))
+app.listen(port, () => console.log(`app listening on port ${port}`));
