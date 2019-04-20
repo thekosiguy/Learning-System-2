@@ -34,7 +34,7 @@ app.set('view engine', 'handlebars')
 
 const port = 8080
 
-app.get('/menu', (req, res) => {
+app.get('/', (req, res) => {
 	res.render('menu', {message: req.flash('message')});
 })
 
@@ -44,10 +44,10 @@ app.get('/user', (req, res) => {
 	res.render('user', user)
 });
 
-app.post('/menu', passport.authenticate
+app.post('/', passport.authenticate
 	('local', {
 	successRedirect: '/user',
-	failureRedirect: '/menu'
+	failureRedirect: '/'
 })); 
 
 app.get('/register', (req, res) => {
