@@ -1,0 +1,75 @@
+<div class="tc">
+<h2>Quiz Time!</h2>
+<h3>Select a quiz from the list of available quizzes below.</h3>
+<ol class="lc">
+    <li><a href="#processors">Processors</a></li>
+    <li><a href="#moderndev">Modern Devices</a></li>
+    <li><a href="#processors&moderndev">Processors And Modern Devices</a></li>
+</ol>
+<a name="processors">   
+    <h3>Processors</h3>
+    <div id="embed-quiz-416868">Loading <a href="https://www.onlinequizcreator.com/processor-quiz-1/quiz-416868">Processor Quiz #1</a></div>
+    <script type="text/javascript">
+	    var QuizWorks = window.QuizWorks || [];
+	    QuizWorks.push(
+		    [document.getElementById("embed-quiz-416868"), "quiz", "416868", {
+			    autostart: false,
+			    width: "100%",
+			    height: "640px" , adapter: "hubspot"
+		    }]
+	    );
+    </script>
+    <script type="text/javascript" async defer src="https://d24s38jd6z1bka.cloudfront.net/script/embed.min.js"></script>
+</a>
+<a name="moderndev"> 
+    <h3>Modern Devices</h3>
+    <div id="embed-quiz-416877">Loading <a href="https://www.onlinequizcreator.com/modern-devices-quiz-1/quiz-416877">Modern Devices Quiz #1</a></div>
+    <script type="text/javascript">
+	    var QuizWorks = window.QuizWorks || [];
+	    QuizWorks.push(
+		    [document.getElementById("embed-quiz-416877"), "quiz", "416877", {
+			    autostart: false,
+			    width: "100%",
+			    height: "640px" , adapter: "hubspot"
+		    }]
+	    );
+    </script>
+    <script type="text/javascript" async defer src="https://d24s38jd6z1bka.cloudfront.net/script/embed.min.js"></script>
+</a>
+<a name="processors&moderndev">
+    <h3>Processors And Modern Devices</h3>
+	<div id="embed-quiz-416878">Loading <a href="https://www.onlinequizcreator.com/processors-modern-devices-quiz-1/quiz-416878">Processors &amp; Modern Devices Quiz #1</a></div>
+	<script type="text/javascript">
+		var QuizWorks = window.QuizWorks || [];
+		QuizWorks.push(
+			[document.getElementById("embed-quiz-416878"), "quiz", "416878", {
+				autostart: false,
+				width: "100%",
+				height: "640px" , adapter: "hubspot"
+			}]
+		);
+	</script>
+	<script type="text/javascript" async defer src="https://d24s38jd6z1bka.cloudfront.net/script/embed.min.js"></script>
+</a>
+<b>Completed all the quizzes? click the button below to save your progress (must be logged in)!</b>
+<form method="post" action="/quiz">
+    <input type="hidden" id="user" name="username" value=""/>
+    <input type="hidden" name="done" value="true" />
+	<input type="submit" value="Done" />
+</form>
+
+<script type="text/javascript">
+    var username = sessionStorage.getItem('username');
+    document.getElementById("user").value = username;
+	var status = sessionStorage.getItem('status');
+	if (status === "loggedIn"){
+		document.write('<br><a href="/progress">Track Your Progress</a>')
+	}
+</script>
+<br>
+<a href="/processors">Processors</a>
+<br>
+<a href="/moderndev">Modern Devices</a>
+<br>
+<a href="/menu">Menu</a>
+</div>

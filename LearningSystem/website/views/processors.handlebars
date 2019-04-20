@@ -1,0 +1,89 @@
+<div class="tc">
+<h2 class="tc">Processors</h2>
+<p>A processor, or "microprocessor," is a small chip that resides in computers and other electronic devices. 
+Its basic job is to receive input and provide the appropriate output. 
+While this may seem like a simple task, modern processors can handle trillions of calculations per second.</p>
+<ol class="lc">  
+    <li><a href="#20thcenturyprocessors">20th Century Processors</a></li>
+    <li><a href="#modernprocessors">Modern Processors</a></li>
+    <li><a href="#videos">Helpful Videos</a></li>
+</ol>
+<a name="20thcenturyprocessors">
+    <h3>20th Century Processors</h3>
+    <img src="Images/20thcenturyprocessor.jpg" width="300px" height="250px" alt="20th Century Processor">
+    <p>During the 20th century, inventors created devices that we regularly depend upon. Arguably, one of the most important inventions was the transistor. 
+    Developed in 1947 by engineers working for Bell Laboratories, the original purpose of the transistor was to amplify sound over phone lines. The transistor 
+    replaced an older technology -- vacuum tubes. The tubes weren't reliable, they were bulky and they generated a lot of heat, too.
+    The first transistor was a point-contact transistor that measured half an inch (1.27 centimeters) in height. The transistor wasn't very powerful, but physicists 
+    recognized the potential of the device. Before long, physicists and engineers began to incorporate transistors into various electronic devices. And as time passed, 
+    they also learned how to make transistors smaller and more efficient. In 1958, engineers attached two transistors to a silicon crystal and created the world's first 
+    integrated circuit. In turn, the integrated circuit paved the way to the development of the microprocessor. If you compare a computer to a human being, the microprocessor 
+    would be the brain. It makes calculations and processes data.</p>
+</a>
+<a name="modernprocessors">
+    <h3>Modern Processors</h3>
+    <img src="Images/moderncpu.jpg" width="300px" height="250px" alt="20th Century Processor">
+    <p>A processor, or "microprocessor," is a small chip that resides in computers and other electronic devices. Its basic job is to receive input and provide the appropriate 
+        output. While this may seem like a simple task, modern processors can handle trillions of calculations per second. The central processor of a computer is also known as 
+        the CPU, or "central processing unit." This processor handles all the basic system instructions, such as processing mouse and keyboard input and running applications.
+    </p>
+    <img src="Images/cpudiagram.png" width="400px" height="250px" alt="Basic cpu Diagram">
+    <p>The image above is a basic diagram of a cpu, the arithmetic/logic gate unit is capable of performing arithmetic and logic operations on data. The control unit controls 
+        the flow of data within the CPU and memory holds both data and instructions. An input device is a device used to transmit data into the computer for e.g. a mouse or 
+        keyboard whereas an output device is responsible for displaying data for e.g. a computer screen. The floating point unit (FPU), also known as a math coprocessor or numeric 
+        coprocessor, a specialized coprocessor that manipulates numbers more quickly than the basic microprocessor circuitry can.
+    </p>
+
+    <p>In a computer, the CPU is found at the heart of the system, plugged into the motherboard. You wouldn’t be able to see it if you took the side panel off your desktop PC, 
+        as it will be hidden under a cooling fan – a CPU is a powerful component and would get very hot without proper cooling. In a desktop PC, the CPU and cooler are designed 
+        to be easy to remove. This means replacing the chip if it goes wrong is a simple process. It doesn’t mean a processor can be easily swapped for a more powerful model, 
+        however, as the CPU will need to be compatible with the motherboard. Most of the time, if you’re upgrading to a CPU that’s a year or two newer than your current one, 
+        you’ll also need to fit a new motherboard. 
+        
+        In laptops, on the other hand, the CPU and cooler are as good as impossible to remove (and even harder to replace). It’s 
+        also not possible to change the motherboard, so it’s best to think as laptops as non-upgradable in this regard. Registers, which hold instructions and other data. 
+        Registers supply operands to the ALU and store the results of operations. For L1 and L2 cache memory, their inclusion in the CPU saves time compared to having to 
+        get data from random access memory (RAM), furthermore, it takes less time for the processor to retrieve data from L1 cache compared to L2 however it has less capacity.
+    </p>
+
+    <h3>Multi-Core CPU</h3>
+    <p>One thing to consider when evaluating CPUs is how many cores the processor has. More cores mean that the computer can handle more tasks at once. 
+        If you direct the computer to perform a complex task, it will work more smoothly if the CPU has multiple cores. Most CPUs come with two, four or eight cores. 
+        You're more likely to find an eight-core CPU in a desktop computer than a laptop computer.
+    </p>
+
+    <h3>Measurements</h3>
+    The clock speed is an important measurement of how many processing cycles the CPU can complete in a second. An example clock speed would be 2.6 GHz, 
+    or 2.6 billion cycles per second. However, different processors have different architectures so one processor at 1.8 GHz might take more cycles to 
+    complete a task than another processor at 1.8 GHz. A CPU generally has a 32-bit or 64-bit architecture. A CPU with a 64-bit processor has the potential 
+    to handle tasks more quickly and efficiently than a 32-bit processor.
+    </p>
+</a>
+<a name="videos">
+    <h3>Videos</h3>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/zltgXvg6r3k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>Crash course on instructions and programs.</p>
+</a>
+
+    <b>Done with this section? click the button below to save your progress (must be logged in)!</b>
+    <form method="post" action="/processors">
+        <input type="hidden" id="user" name="username" value=""/>
+        <input type="hidden" name="done" value="true" />
+	    <input type="submit" value="Done" />
+    </form>
+
+    <script type="text/javascript">
+        var username = sessionStorage.getItem('username');
+        document.getElementById("user").value = username;
+        var status = sessionStorage.getItem('status');
+	    if (status === "loggedIn"){
+		    document.write('<br><a href="/progress">Track Your Progress</a>')
+	    }
+    </script>
+    <br>
+    <a href="/moderndev">Modern Devices</a>
+    <br>
+    <a href="/quiz">Test Your Knowledge</a>
+    <br>
+    <a href="/menu">Menu</a>
+</div>

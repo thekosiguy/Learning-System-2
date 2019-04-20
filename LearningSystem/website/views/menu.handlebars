@@ -1,0 +1,26 @@
+<h2 class="tc">e-Tech</h2>
+<p class="i tc">Web-based E-Learning tool</p>
+<script type="text/javascript">
+	if ('{{message}}' === "Invalid Password!"){
+		alert("Invalid Password!")
+	}else if ('{{message}}' === "Invalid Username!"){
+		alert("Invalid Username!")
+	}
+</script>
+<form method="post" action="/menu" class="tc">
+	<p><label for="username">Username: </label><input type="text" name="username" /></p>
+	<p><label for="password">Password: </label><input type="password" name="password" /></p>
+	<input type="hidden" name="formtype" value="login" />
+	<input type="submit" value="login"/>
+</form>	
+
+<br>
+<div class="tc">
+	<a href = "/register" class="tc">Create Account</a>
+	<br>
+	<a class="tc" href = "/guest">Sign In As Guest</a>
+	<br>
+	<a class="tc" href = "/about">About e-Tech</a>
+</div>
+
+

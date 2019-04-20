@@ -1,0 +1,100 @@
+<div class="tc">  
+<h2 class="tc">Modern Devices</h2>
+<p>Electronic devices are components for controlling the flow of electrical currents 
+for the purpose of information processing and system control. Prominent examples 
+include transistors and diodes. Electronic devices are usually small and can be grouped 
+together into packages called integrated circuits. This miniaturization is central to the 
+modern electronics boom.</p>
+<ol class="lc">
+    <li><a href="#cellphones">Cellphones</a></li>
+    <li><a href="#laptops">Laptops</a></li>
+    <li><a href="#videos">Helpful Videos</a></li>
+</ol>
+<a name="cellphones">
+    <h3>Cellphones</h3>
+    <img src="images/cellphone.jpg" width="300px" height="300px" alt="iPhone 6 4G LTE">
+    <p>With worldwide mobile subscriptions estimated to be around 7 billion in 2014, cell phones 
+    have become a universal and indispensable tool for modern life. With a cell phone, you can 
+    talk to anybody on the planet from almost anywhere. But do you really know how your cell phone works?
+    In the most basic form, a cell phone is essentially a two-way radio, consisting of a radio transmitter 
+    and a radio receiver. When you chat with your friend on your cell phone, your phone converts your voice 
+    into an electrical signal, which is then transmitted via radio waves to the nearest cell tower. The 
+    network of cell towers then relays the radio wave to your friend’s cell phone, which converts it to
+    an electrical signal and then back to sound again. In the basic form, a cell phone works just like a walkie-talkie.</p>
+
+    <p>Cell phones use radio waves to communicate. Radio waves transport digitized voice or data in the form of oscillating 
+        electric and magnetic fields, called the electromagnetic field (EMF). The rate of oscillation is called frequency. 
+        Radio waves carry the information and travel in air at the speed of light. Cell phones transmit radio waves in all 
+        directions. The waves can be absorbed and reflected by surrounding objects before they reach the nearest cell tower.
+    </p>
+
+    <p>Cell phones contain at least one radio antenna in order to transmit or receive radio signals. An antenna converts an 
+        electric signal to the radio wave (transmitter) and vice versa (receiver). Some cell phones use one antenna as the 
+        transmitter and receiver while others, such as the iPhone 5, have multiple transmitting or receiving antennas. An antenna 
+        is a metallic element (such as copper) engineered to be a specific size and shape for transmitting and receiving specific 
+        frequencies of radio waves. modern cell phones contain more compact antennas inside the device thanks to advanced antenna 
+        technologies. It’s important to understand that any metallic components in the device (such as the circuit board and the 
+        metal frame for the iPhone) can interact with the transmission antenna(s) and contribute to the pattern of the transmitted signal.
+        Many modern smart phones also contain more than one type of antenna. In addition to the cellular antenna, they may also have Wi-Fi, 
+        Bluetooth and/or GPS antennas.
+    </p>
+</a>
+<a name="laptops">
+    <h3>Laptops</h3>
+    <img src="images/laptop.jpg" width="400px" height="300px" alt="Inspiron 15 5000">
+    <p>A laptop computer, sometimes called a notebook computer by manufacturers, is a battery- or AC-powered personal computer 
+    generally smaller than a briefcase that can easily be transported and conveniently used in temporary spaces such as on airplanes, 
+    in libraries, temporary offices, and at meetings. A laptop typically weighs less than 5 pounds and is 3 inches or less in thickness. 
+    Among the best-known makers of laptop computers are IBM, Apple, Compaq, Dell, and Toshiba.</p>
+
+    <p>Laptop computers generally cost more than desktop computers with the same capabilities because they are more difficult to design 
+    and manufacture. A laptop can effectively be turned into a desktop computer with a docking station, a hardware frame that supplies 
+    connections for peripheral input/output devices such as a printer or larger monitor. The less capable port replicator allows you to 
+    connect a laptop to a number of peripherals through a single plug. Laptops usually come with displays that use thin-screen technology. 
+    The thin film transistor or active matrix screen is brighter and views better at different angles than the STN or dual-scan screen. 
+    Laptops use several different approaches for integrating a mouse into the keyboard, including the touch pad, the trackball, and the 
+    pointing stick. A serial port also allows a regular mouse to be attached. The PC Card is insertable hardware for adding a modem or 
+    network interface card to a laptop. CD-ROM and digital versatile disc drives may be built-in or attachable.
+    </p>
+
+    <p>A laptop's central processing unit (CPU) has advanced power-saving features and produces less heat than one intended purely for 
+        desktop use. Typically, laptop CPUs have two processor cores, although 4-core models are also available. 
+    </p>
+
+    <h3>Memory</h3>
+    <p>Most laptops use SO-DIMM (small outline dual in-line memory module) memory modules, as they are about half the size of desktop DIMMs. 
+        They are sometimes accessible from the bottom of the laptop for ease of upgrading, or placed in locations not intended for user replacement. 
+        Most laptops have two memory slots, although some of the lowest-end models will have only one, and some high end models (usually mobile 
+        engineering workstations and a few high-end models intended for gaming) have four slots. Most mid-range laptops are factory equipped with 
+        4–6 GB of RAM. Netbooks are commonly equipped with only 1–2 GB of RAM and are generally only expandable to 2 GB, if at all. Laptops may have 
+        memory soldered to the motherboard to conserve space, which allows the laptop to have a thinner chassis design. Soldered memory cannot be easily upgraded.
+    </p>
+</a>
+<a name="videos">
+    <h3>Videos</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/AkFi90lZmXA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>Video that briefly explains how the inside of a computer functions. </p>
+</a>
+
+<b>Done with this section? click the button below to save your progress (must be logged in)!</b>
+    <form method="post" action="/moderndev">
+        <input type="hidden" id="user" name="username" value=""/>
+        <input type="hidden" name="done" value="true" />
+	    <input type="submit" value="Done" />
+    </form>
+
+    <script type="text/javascript">
+        var username = sessionStorage.getItem('username');
+        document.getElementById("user").value = username;
+        var status = sessionStorage.getItem('status');
+	    if (status === "loggedIn"){
+		    document.write('<br><a href="/progress">Track Your Progress</a>')
+	    }
+    </script>
+<br>
+<a href="/processors">Processors</a>
+<br>
+<a href="/quiz">Test Your Knowledge</a>
+<br>
+<a href="/menu">Menu</a>
+</div>

@@ -1,0 +1,32 @@
+<div class="tc">
+    <h2>Your Progress</h2>
+    <h3>Track your progress here!</h3>
+    <!-- Display the user's progress! (user must log out then log back in
+    to view any changes made to their progress)-->
+    <script type="text/javascript">
+        if ('{{processors}}' === "done"){
+            document.write("<b>Processors: Section Completed!</b><br>")
+        }else{
+            document.write("<b>Processors: Section Not Completed!</b><br>")
+        }
+
+        if ('{{moderndev}}' === "done"){
+            document.write("<b>Modern Devices: Section Completed!</b><br>")
+        }else{
+            document.write("<b>Modern Devices: Section Not Completed!</b><br>")
+        }
+
+        if ('{{quizzes}}' === "done"){
+            document.write("<b>Quizzes: Section Completed!</b><br><br>")
+        }else{
+            document.write("<b>Quizzes: Section Not Completed!</b><br><br>")
+        }
+    </script>
+    <a href="/processors">Learn About Processors</a>
+    <br>
+    <a href="/moderndev">Learn About Modern Devices</a>
+    <br>
+    <a href="/quiz">Test Your Knowledge</a>
+    <br>
+    <a href="/menu">Menu</a>
+</div>
